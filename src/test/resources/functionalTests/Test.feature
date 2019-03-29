@@ -24,4 +24,3 @@ Feature: Test Simple API with RestAssure
     Given User hits the given API Url
     When User request for a particular city by get method
     Then Status code is 200
-    And Response is of City \\{"cityname"}

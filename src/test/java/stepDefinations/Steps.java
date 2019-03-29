@@ -39,13 +39,4 @@ public class Steps {
 			System.out.println("API retuns the status of 200");
 		 
 	}
-	@And("^Response is of City \"([^\"]*)\"$")
-	public void checkCity(String cityName)
-	{
-		JsonPath jsonPathEvaluator = response.jsonPath();
-		 String responseCity = jsonPathEvaluator.get("City");
-		 if(cityName.equals(responseCity))
-			 System.out.println("Right City being recived");
-	}
-
 }
