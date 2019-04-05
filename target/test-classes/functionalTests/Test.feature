@@ -23,4 +23,17 @@ Feature: Test Simple API with RestAssure
   Scenario: Test of Get with rest api
     Given User hits the given API Url
     When User request for a particular city by get method
-    Then Status code is 200
+    Then Validate Status code is 200
+    And Response is of Correct City
+    
+   Scenario: TEst of Post with Rest API
+   	Given User hit the given API
+   	When User post the particular request
+   	Then Validate Status Code
+   	And The response recieved
+   	
+   	Scenario: Write a data into a file recieved from API
+    Given I send request to the API
+    When Recieve response from API
+    Then Save data to the File
+   	

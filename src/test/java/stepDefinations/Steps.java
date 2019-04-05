@@ -1,5 +1,7 @@
 package stepDefinations;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,6 +18,12 @@ public class Steps {
 	private RequestSpecification httpRequest;
 
 	private String baseURL = "http://restapi.demoqa.com/utilities/weather/city";
+	
+	@Before
+	public void consoleMsg()
+	{
+		System.out.println("get enter");
+	}
 
 	@Given("^User hits the given API Url$")
 	public void GetWeatherDetails()
@@ -31,7 +39,7 @@ public class Steps {
 		System.out.println("User hits the API");
 	}
 
-	@Then("^Status code is 200$")
+	@Then("^Validate Status code is 200$")
 	public void checkStatus()
 	{
 		int statusCode = response.getStatusCode();
@@ -39,4 +47,19 @@ public class Steps {
 			System.out.println("API retuns the status of 200");
 		 
 	}
+	@And("^Response is of Correct City$")
+	public void checkCity()
+	{
+		JsonPath jsonPathEvaluator = response.jsonPath();
+		 String responseCity = jsonPathEvaluator.get("City");
+		 if(responseCity.equals("Hyderabad"))
+			 System.out.println("Right City being recived");
+	}
+	
+	@After
+	public void finish()
+	{
+		System.out.println("Get finish");
+	}
+
 }
